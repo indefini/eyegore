@@ -1,0 +1,14 @@
+[package]
+name = "eyegore"
+version = "0.1.0"
+#authors = ["noone"]
+
+[[bin]]
+name = "eyegore"
+
+[dependencies]
+libc = "*"
+
+[dependencies.wayland-sys]
+path = "../wayland-sys"
+
