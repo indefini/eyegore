@@ -3,6 +3,22 @@ use std::ffi::CString;
 use std::ptr;
 use std::ffi::CStr;
 
+/*
+struct Signals
+{
+	create : *const wayland::wl_signal,
+	activate : *const wayland::wl_signal,
+	kill : *const wayland::wl_signal,
+}
+
+impl Signals {
+	fn new() -> Signals
+	{
+		Signals 
+	}
+}
+*/
+
 fn main() {
     let display = unsafe { wayland::wl_display_create() };
 
@@ -13,6 +29,11 @@ fn main() {
 
     let str = unsafe { CStr::from_ptr(socket_name).to_string_lossy().into_owned() };
     println!("created a socket : {}", str);
+
+    // here e is setting WAYLAND_DISPLAY env variable
+    let loopp = unsafe { wayland::wl_display_get_event_loop(display) };
+
+    let signals = unsafe { wayland::create_signals() };
 
     //let client = unsafe { wayland::wl_client_create() };
 
