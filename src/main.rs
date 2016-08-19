@@ -30,10 +30,12 @@ fn main() {
     let str = unsafe { CStr::from_ptr(socket_name).to_string_lossy().into_owned() };
     println!("created a socket : {}", str);
 
-    // here e is setting WAYLAND_DISPLAY env variable
+    // her setting WAYLAND_DISPLAY env variable
     let loopp = unsafe { wayland::wl_display_get_event_loop(display) };
 
     let signals = unsafe { wayland::create_signals() };
+
+    unsafe { wayland::init_tmp(display) };
 
     //let client = unsafe { wayland::wl_client_create() };
 
