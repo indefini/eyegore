@@ -39,6 +39,8 @@ fn main() {
 
     //let client = unsafe { wayland::wl_client_create() };
 
+    unsafe { wayland::wl_display_init_shm(display); }
+
     unsafe { wayland::wl_display_run(display); }
     unsafe { wayland::wl_display_destroy(display); }
 }
