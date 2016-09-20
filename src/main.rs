@@ -19,7 +19,7 @@ impl Signals {
 }
 */
 
-fn main() {
+fn main_wayland() {
     let display = unsafe { wayland::wl_display_create() };
 
     println!("created a display : {:?}", display);
@@ -43,6 +43,11 @@ fn main() {
 
     unsafe { wayland::wl_display_run(display); }
     unsafe { wayland::wl_display_destroy(display); }
+}
+
+fn main()
+{	
+    unsafe { wayland::main_wlc(); }
 }
 
 
